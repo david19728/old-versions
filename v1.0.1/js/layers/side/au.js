@@ -165,7 +165,7 @@ addLayer("au", {
         },
         12: {
             title: "用声望点制造自动化燃料",
-            cost(x) { return new ExpantaNum(2).pow(x).floor() },
+            cost(x) { return new ExpantaNum(x.add(1)).pow(2).floor() },
             display() {
                 var display2 = "数量："
                 display2 += getBuyableAmount("au",12)
@@ -199,7 +199,7 @@ addLayer("au", {
         },
         13: {
             title: "用助推器制造自动化燃料",
-            cost(x) { return new ExpantaNum(2).pow(x).floor() },
+            cost(x) { return new ExpantaNum(x.add(1)).pow(2).floor() },
             display() {
                 var display3 = "数量："
                 display3 += getBuyableAmount("au",13)
