@@ -139,7 +139,7 @@ addLayer("au", {
             display() {
                 var display1 = "数量："
                 display1 += getBuyableAmount("au",11)
-                display1 += "<br>价格："
+                display1 += "<br>需要："
                 display1 += this.cost()
                 display1 += "序数点"
                 return display1
@@ -148,7 +148,6 @@ addLayer("au", {
             buy() {
                 if(this.canAfford())
                 {
-                    player.points = player.points.sub(this.cost())
                     player.au.points = player.au.points.add(1)
                     setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
                 }
@@ -157,7 +156,6 @@ addLayer("au", {
                 var level1 = player.points.div(1e10).logBase(1e10).floor()
                 if(this.canAfford() && level1.gt(getBuyableAmount("au",11)) && this.cost(level1).lte(player.points))
                 {
-                    player.points = player.points.sub(this.cost(level1))
                     player.au.points = player.au.points.sub(getBuyableAmount("au",11)).add(level1)
                     setBuyableAmount(this.layer, this.id,level1)
                 }
@@ -169,7 +167,7 @@ addLayer("au", {
             display() {
                 var display2 = "数量："
                 display2 += getBuyableAmount("au",12)
-                display2 += "<br>价格："
+                display2 += "<br>需要："
                 display2 += this.cost()
                 display2 += "声望点"
                 return display2
@@ -182,16 +180,14 @@ addLayer("au", {
             buy() {
                 if(this.canAfford())
                 {
-                    player.p.points = player.p.points.sub(this.cost())
                     player.au.points = player.au.points.add(1)
                     setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
                 }
             },
             buyMax() {
-                var level2 = player.p.points.logBase(2).floor().sub(1)
+                var level2 = player.p.points.sqrt().floor().sub(1)
                 if(this.canAfford() && level2.gt(getBuyableAmount("au",12)) && this.cost(level2).lte(player.p.points))
                 {
-                    player.p.points = player.p.points.sub(this.cost(level2.add(1)).sub(1))
                     player.au.points = player.au.points.sub(getBuyableAmount("au",12)).add(level2)
                     setBuyableAmount(this.layer, this.id,level2)
                 }
@@ -203,7 +199,7 @@ addLayer("au", {
             display() {
                 var display3 = "数量："
                 display3 += getBuyableAmount("au",13)
-                display3 += "<br>价格："
+                display3 += "<br>需要："
                 display3 += this.cost()
                 display3 += "助推器"
                 return display3
@@ -216,13 +212,12 @@ addLayer("au", {
             buy() {
                 if(this.canAfford())
                 {
-                    player.b.points = player.b.points.sub(this.cost())
                     player.au.points = player.au.points.add(1)
                     setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
                 }
             },
             buyMax() {
-                var level3 = player.b.points.logBase(2).floor().sub(1)
+                var level3 = player.b.points.sqrt().floor().sub(1)
                 if(this.canAfford() && level3.gt(getBuyableAmount("au",13)) && this.cost(level3).lte(player.b.points))
                 {
                     player.b.points = player.b.points.sub(this.cost(level3.add(1)).sub(1))

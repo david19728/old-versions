@@ -97,7 +97,7 @@ addLayer("p", {
     update(diff){
         if(hasUpgrade("b",13))
         {
-            player.p.prsBase = ExpantaNum(5).add(player.b.dist.add(1).div(5))
+            player.p.prsBase = ExpantaNum(5).add(player.b.dist.add(1).logBase(10).div(5))
         }
     },
     upgrades: {
@@ -121,7 +121,7 @@ addLayer("p", {
             cost: new ExpantaNum(7),
             effectDisplay()
             {
-                return "+" + player.b.dist.add(1).div(5).toFixed(6)
+                return "+" + player.b.dist.add(1).logBase(10).div(5).toFixed(6)
             }
         },
         14: {
